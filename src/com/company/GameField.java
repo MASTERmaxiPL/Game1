@@ -36,6 +36,7 @@ public class GameField extends JPanel {
             super.keyPressed(e);
             int key = e.getKeyCode();
             for (CharacterClass player : players) {
+                ////GRACZ 1////
                 if (key == player.getLeftKey()) {
                     //player.setX(player.getX() - 40);
                     player.left();
@@ -54,6 +55,9 @@ public class GameField extends JPanel {
                 }
                 if (key == player.getLeftAttackKey()) {
                     player.setAttackLeftImage();
+
+
+
 
                     if (player.getX() > 0 && CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH][player.getY()] > 0) {
                         player.attack(players[CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH][player.getY()] - 1]);
