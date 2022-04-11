@@ -4,11 +4,11 @@ import com.company.classes.AttackType;
 import com.company.classes.CharacterClass;
 
 public class Mage  extends CharacterClass {
-
     public Mage(String name, int x, int y, int leftKey, int rightKey, int upKey, int downKey, int leftAttackKey, int rightAttackKey) {
         super(name, x, y, leftKey, rightKey, upKey, downKey, leftAttackKey, rightAttackKey);
-        this.setAttackAmount(50);
-        setHealthPoints(500);
+        this.setAttackAmount(60);
+        this.setMaxHealthPoints(400);
+        setHealthPoints(400);
         this.className = "Mage";
         /*this.setLevel(1);
         this.setMaxHealthPoints(1000);
@@ -20,20 +20,24 @@ public class Mage  extends CharacterClass {
         this.setName(name);
 
         this.setX(300);
-        this.setY(0);
-        this.uploadImage("1.png", "2.png", "3.png");*/
+        this.setY(0);*/
+        this.uploadImage("Game1/mage.png", "Game1/mageLeftAttack.png", "Game1/mageRightAttack.png");
     }
     public void left() {
-        int newPositionX = this.getX() > 40 ?  this.getX() - 40 : 320;
+        int newPositionX = this.getX() > 40 ?  this.getX() - 40 : 0;
+        tryChangePosition(newPositionX, this.getY());
     }
     public void right() {
-        int newPositionX = this.getX() < 320 ?  this.getX() + 40 : 0;
-
+        int newPositionX = this.getX() < 320 ?  this.getX() + 40 : 320;
+        tryChangePosition(newPositionX, this.getY());
     }
     public void up() {
-        int newPositionY = this.getY() > 80 ?  this.getY() - 80 : 320;
+        int newPositionY = this.getY() >= 80 ?  this.getY() - 80 : 0;
+        System.out.println(newPositionY);
+        tryChangePosition(this.getX(), newPositionY);
     }
     public void down() {
-        int newPositionY = this.getY() < 320 ?  this.getY() + 80 : 0;
+        int newPositionY = this.getY() < 320 ?  this.getY() + 80 : 320;
+        tryChangePosition(this.getX(), newPositionY);
     }
 }

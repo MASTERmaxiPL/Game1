@@ -36,7 +36,7 @@ public class GameField extends JPanel {
             super.keyPressed(e);
             int key = e.getKeyCode();
             for (CharacterClass player : players) {
-                ////GRACZ 1////
+
                 if (key == player.getLeftKey()) {
                     //player.setX(player.getX() - 40);
                     player.left();

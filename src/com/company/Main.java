@@ -16,9 +16,12 @@ public class Main {
 
         Team team = new Team (
             new Warrior("Aragorn", 0, 0, KeyEvent.VK_A, KeyEvent.VK_D, KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_Q, KeyEvent.VK_E),
-            //new Mage("Gendolf"),
-            new Archer("Legolas", 320, 0, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_O, KeyEvent.VK_P)
-            //new Healer("Radogast")
+
+            new Archer("Legolas", 320, 0, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT, KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_N, KeyEvent.VK_M),
+
+            new Mage("Gordon", 320, 320, KeyEvent.VK_J, KeyEvent.VK_L, KeyEvent.VK_I, KeyEvent.VK_K, KeyEvent.VK_U, KeyEvent.VK_O),
+
+            new Healer("Helia", 0, 320, KeyEvent.VK_F, KeyEvent.VK_H, KeyEvent.VK_T, KeyEvent.VK_G, KeyEvent.VK_R, KeyEvent.VK_Y)
         );
         team.info();
         Syberia arena1 = new Syberia();

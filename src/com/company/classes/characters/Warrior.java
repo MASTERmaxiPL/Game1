@@ -6,9 +6,9 @@ import com.company.classes.CharacterClass;
 public class Warrior extends CharacterClass {
    public Warrior(String name, int x, int y, int leftKey, int rightKey, int upKey, int downKey, int leftAttackKey, int rightAttackKey) {
         super(name, x, y, leftKey, rightKey, upKey, downKey, leftAttackKey, rightAttackKey);
-        this.setAttackAmount(100);
-        this.setMaxHealthPoints(1000);
-        setHealthPoints(1000);
+        this.setAttackAmount(90);
+        this.setMaxHealthPoints(800);
+        setHealthPoints(800);
         this.className = "Warior";
         /*this.setLevel(1);
         this.setMaxHealthPoints(1000);
@@ -21,7 +21,7 @@ public class Warrior extends CharacterClass {
 
         /*this.setX(0);
         this.setY(0);*/
-        this.uploadImage("1.png", "3.png", "2.png");
+        this.uploadImage("Game1/1.png", "Game1/3.png", "Game1/2.png");
     }
 
     public void left() {
