@@ -3,6 +3,8 @@ package com.company.classes.characters;
 import com.company.classes.AttackType;
 import com.company.classes.CharacterClass;
 
+import static com.company.classes.AttackType.MAGICAL_RANGED;
+
 public class Mage  extends CharacterClass {
     public Mage(String name, int x, int y, int leftKey, int rightKey, int upKey, int downKey, int leftAttackKey, int rightAttackKey) {
         super(name, x, y, leftKey, rightKey, upKey, downKey, leftAttackKey, rightAttackKey);
@@ -10,6 +12,7 @@ public class Mage  extends CharacterClass {
         this.setMaxHealthPoints(400);
         setHealthPoints(400);
         this.className = "Mage";
+        this.getAttackType();
         /*this.setLevel(1);
         this.setMaxHealthPoints(1000);
         this.setHealthPoints(1000);
@@ -21,6 +24,7 @@ public class Mage  extends CharacterClass {
 
         this.setX(300);
         this.setY(0);*/
+        this.setAttackType(MAGICAL_RANGED);
         this.uploadImage("Game1/mage.png", "Game1/mageLeftAttack.png", "Game1/mageRightAttack.png");
     }
     public void left() {

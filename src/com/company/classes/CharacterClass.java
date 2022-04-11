@@ -150,7 +150,7 @@ public abstract class CharacterClass implements BaseClass {
 
     @Override
     public void info() {
-        System.out.println("Name: " + this.name + "\nCurrentHP: " + this.healthPoints + "\nCurrentmana: " + this.maxManaPoints + "\nLevel: " + this.level);
+        System.out.println("Name: " + this.name + "\nCurrentHP: " + this.healthPoints + "\nCurrentmana: " + this.maxManaPoints + "\nLevel: " + this.level + "\nAttackType: " + this.attackType);
     }
 
     private Image image, baseImage, attackLeftImage, attackRightImage;

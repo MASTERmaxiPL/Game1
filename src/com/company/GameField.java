@@ -7,6 +7,8 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import static com.company.classes.AttackType.*;
+
 public class GameField extends JPanel {
     private Team team;
     private CharacterClass[] players;
@@ -53,15 +55,35 @@ public class GameField extends JPanel {
                     //player.setY(player.getY() + 40);
                     player.down();
                 }
+
                 if (key == player.getLeftAttackKey()) {
                     player.setAttackLeftImage();
 
-
-
-
-                    if (player.getX() > 0 && CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH][player.getY()] > 0) {
-                        player.attack(players[CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH][player.getY()] - 1]);
+                    if(player.getAttackType() == PHYSICAL ||  player.getAttackType() == MAGICAL ){
+                        if (player.getX() > 0 && CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH][player.getY()] > 0) {
+                            player.attack(players[CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH][player.getY()] - 1]);
+                        }
                     }
+                    else if(player.getAttackType() == PHYSICAL_RANGED ){
+                        if (player.getX() > 0 && CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH][player.getY()] > 0) {
+                            player.attack(players[CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH][player.getY()] - 1]);
+                        }
+                        else if (player.getX() > 0 && CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH - 40][player.getY()] > 0) {
+                            player.attack(players[CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH - 40][player.getY()] - 1]);
+                        }
+                        else if (player.getX() > 0 && CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH - 80][player.getY()] > 0) {
+                            player.attack(players[CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH - 80][player.getY()] - 1]);
+                        }
+                    }
+                    else if(player.getAttackType() == MAGICAL_RANGED ){
+                        if (player.getX() > 0 && CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH][player.getY()] > 0) {
+                            player.attack(players[CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH][player.getY()] - 1]);
+                        }
+                        else if (player.getX() > 0 && CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH - 40][player.getY()] > 0) {
+                            player.attack(players[CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH - 40][player.getY()] - 1]);
+                        }
+                    }
+
                     //timer
                     new java.util.Timer().schedule(
                             new java.util.TimerTask() {
@@ -73,6 +95,7 @@ public class GameField extends JPanel {
                             }, 200
                     );
                 }
+
                 if (key == player.getRightAttackKey()) {
                     player.setAttackRightImage();
 

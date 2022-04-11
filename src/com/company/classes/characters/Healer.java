@@ -3,7 +3,9 @@ package com.company.classes.characters;
 import com.company.classes.AttackType;
 import com.company.classes.CharacterClass;
 
-public class Healer  extends CharacterClass {
+import static com.company.classes.AttackType.MAGICAL;
+
+public class Healer extends CharacterClass {
     public Healer(String name, int x, int y, int leftKey, int rightKey, int upKey, int downKey, int leftAttackKey, int rightAttackKey) {
         super(name, x, y, leftKey, rightKey, upKey, downKey, leftAttackKey, rightAttackKey);
         this.setAttackAmount(40);
@@ -21,6 +23,7 @@ public class Healer  extends CharacterClass {
 
         this.setX(0);
         this.setY(300);*/
+        this.setAttackType(MAGICAL);
         this.uploadImage("Game1/healer.png", "Game1/healerLeftAttack.png", "Game1/healerRightAttack.png");
     }
     public void left() {

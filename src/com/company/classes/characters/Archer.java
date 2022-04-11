@@ -3,6 +3,9 @@ package com.company.classes.characters;
 import com.company.classes.AttackType;
 import com.company.classes.CharacterClass;
 
+import static com.company.classes.AttackType.MAGICAL_RANGED;
+import static com.company.classes.AttackType.PHYSICAL_RANGED;
+
 public class Archer  extends CharacterClass {
     public Archer(String name, int x, int y, int leftKey, int rightKey, int upKey, int downKey, int leftAttackKey, int rightAttackKey) {
         super(name, x, y, leftKey, rightKey, upKey, downKey, leftAttackKey, rightAttackKey);
@@ -18,9 +21,9 @@ public class Archer  extends CharacterClass {
         this.setAttackType(AttackType.PHYSICAL);
         this.setAttackAmount(5);
         this.setName(name);*/
-
         /*this.setX(300);
         this.setY(300);*/
+        this.setAttackType(PHYSICAL_RANGED);
         this.uploadImage("Game1/5.png", "Game1/7.png", "Game1/6.png");
 
 
