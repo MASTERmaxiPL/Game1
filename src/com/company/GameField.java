@@ -31,6 +31,26 @@ public class GameField extends JPanel {
             System.out.println("health points =   " + player.getHealthPoints());
         }
     }
+    //////LEFT ATTACKS//////
+    protected void AttackOneOnLeft(CharacterClass player){
+        player.attack(players[CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH][player.getY()] - 1]);
+    }
+    protected void AttackTwoOnLeft(CharacterClass player){
+        player.attack(players[CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH - 40][player.getY()] - 1]);
+    }
+    protected void AttackThreeOnLeft(CharacterClass player){
+        player.attack(players[CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH - 80][player.getY()] - 1]);
+    }
+    //////RIGHT ATTACKS//////
+    protected void AttackOneOnRight(CharacterClass player){
+        player.attack(players[CharacterClass.occupiedCells[player.getX() + Constants.CHARACTER_WIDTH][player.getY()] - 1]);
+    }
+    protected void AttackTwoOnRight(CharacterClass player){
+        player.attack(players[CharacterClass.occupiedCells[player.getX() + Constants.CHARACTER_WIDTH + 40][player.getY()] - 1]);
+    }
+    protected void AttackThreeOnRight(CharacterClass player){
+        player.attack(players[CharacterClass.occupiedCells[player.getX() + Constants.CHARACTER_WIDTH + 80][player.getY()] - 1]);
+    }
 
     public class FieldKeyListener extends KeyAdapter {
         @Override
@@ -56,34 +76,34 @@ public class GameField extends JPanel {
                     player.down();
                 }
 
+                //////LEFT ATTACKS//////
                 if (key == player.getLeftAttackKey()) {
                     player.setAttackLeftImage();
 
                     if(player.getAttackType() == PHYSICAL ||  player.getAttackType() == MAGICAL ){
                         if (player.getX() > 0 && CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH][player.getY()] > 0) {
-                            player.attack(players[CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH][player.getY()] - 1]);
+                            AttackOneOnLeft(player);
                         }
                     }
                     else if(player.getAttackType() == PHYSICAL_RANGED ){
                         if (player.getX() > 0 && CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH][player.getY()] > 0) {
-                            player.attack(players[CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH][player.getY()] - 1]);
+                            AttackOneOnLeft(player);
                         }
                         else if (player.getX() > 0 && CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH - 40][player.getY()] > 0) {
-                            player.attack(players[CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH - 40][player.getY()] - 1]);
+                            AttackTwoOnLeft(player);
                         }
                         else if (player.getX() > 0 && CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH - 80][player.getY()] > 0) {
-                            player.attack(players[CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH - 80][player.getY()] - 1]);
+                            AttackThreeOnLeft(player);
                         }
                     }
                     else if(player.getAttackType() == MAGICAL_RANGED ){
                         if (player.getX() > 0 && CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH][player.getY()] > 0) {
-                            player.attack(players[CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH][player.getY()] - 1]);
+                            AttackOneOnLeft(player);
                         }
                         else if (player.getX() > 0 && CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH - 40][player.getY()] > 0) {
-                            player.attack(players[CharacterClass.occupiedCells[player.getX() - Constants.CHARACTER_WIDTH - 40][player.getY()] - 1]);
+                            AttackTwoOnLeft(player);
                         }
                     }
-
                     //timer
                     new java.util.Timer().schedule(
                             new java.util.TimerTask() {
@@ -95,14 +115,34 @@ public class GameField extends JPanel {
                             }, 200
                     );
                 }
-
+                //////RIGHT ATTACKS//////
                 if (key == player.getRightAttackKey()) {
                     player.setAttackRightImage();
 
-                    if (player.getX() < 300 && CharacterClass.occupiedCells[player.getX() + Constants.CHARACTER_WIDTH][player.getY()] > 0) {
-                        player.attack(players[CharacterClass.occupiedCells[player.getX() + Constants.CHARACTER_WIDTH][player.getY()]-1]);
+                    if(player.getAttackType() == PHYSICAL ||  player.getAttackType() == MAGICAL ){
+                        if (player.getX() < 300 && CharacterClass.occupiedCells[player.getX() + Constants.CHARACTER_WIDTH][player.getY()] > 0) {
+                            AttackOneOnRight(player);
+                        }
                     }
-
+                    else if(player.getAttackType() == PHYSICAL_RANGED ){
+                        if (player.getX() < 300 && CharacterClass.occupiedCells[player.getX() + Constants.CHARACTER_WIDTH][player.getY()] > 0) {
+                            AttackOneOnRight(player);
+                        }
+                        else if (player.getX() < 300 && CharacterClass.occupiedCells[player.getX() + Constants.CHARACTER_WIDTH + 40][player.getY()] > 0) {
+                            AttackTwoOnRight(player);
+                        }
+                        else if (player.getX() < 300 && CharacterClass.occupiedCells[player.getX() + Constants.CHARACTER_WIDTH + 80][player.getY()] > 0) {
+                            AttackThreeOnRight(player);
+                        }
+                    }
+                    else if(player.getAttackType() == MAGICAL_RANGED ){
+                        if (player.getX() < 300 && CharacterClass.occupiedCells[player.getX() + Constants.CHARACTER_WIDTH][player.getY()] > 0) {
+                            AttackOneOnRight(player);
+                        }
+                        else if (player.getX() < 300 && CharacterClass.occupiedCells[player.getX() + Constants.CHARACTER_WIDTH + 40][player.getY()] > 0) {
+                            AttackTwoOnRight(player);
+                        }
+                    }
                     //timer
                     new java.util.Timer().schedule(
                             new java.util.TimerTask() {
