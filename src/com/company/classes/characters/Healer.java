@@ -24,7 +24,7 @@ public class Healer extends CharacterClass {
         this.setX(0);
         this.setY(300);*/
         this.setAttackType(MAGICAL);
-        this.uploadImage("Game1/healer.png", "Game1/healerLeftAttack.png", "Game1/healerRightAttack.png");
+        this.uploadImage("healer.png", "healerLeftAttack.png", "healerRightAttack.png");
     }
     public void left() {
         int newPositionX = this.getX() > 40 ?  this.getX() - 40 : 0;

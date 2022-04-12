@@ -24,7 +24,7 @@ public class Archer  extends CharacterClass {
         /*this.setX(300);
         this.setY(300);*/
         this.setAttackType(PHYSICAL_RANGED);
-        this.uploadImage("Game1/5.png", "Game1/7.png", "Game1/6.png");
+        this.uploadImage("5.png", "7.png", "6.png");
 
 
     }

@@ -1,5 +1,7 @@
 package com.company.classes;
 
+import com.company.classes.characters.Healer;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -118,9 +120,31 @@ public abstract class CharacterClass implements BaseClass {
     }
 
 
+    public void burnEffect(int time, CharacterClass attackedPlayer){
+        for(int a = 0; a<3; a++){
+            new java.util.Timer().schedule(
+                    new java.util.TimerTask() {
+                        @Override
+                        public void run() {
+                            attackedPlayer.reduceHealth(5);
+                            System.out.println(attackedPlayer.className + "attacked from burn");
+                        }
+                    }, time
+            );
+        }
+    }
+
     public void attack(CharacterClass attackedPlayer) {
         attackedPlayer.reduceHealth(this.attackAmount);
-        System.out.println(this.className + " attacked " + attackedPlayer.className + " for " + this.attackAmount);
+        if(this.className == "Healer"){
+            int health = this.getHealthPoints();
+            this.setHealthPoints(health + 10);
+        }
+        if(this.className == "Mage"){
+
+                burnEffect(600, attackedPlayer);
+            }
+        System.out.println(this.className + "  attacked " + attackedPlayer.className + " for " + this.attackAmount);
     }
 
     @Override

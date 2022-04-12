@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.classes.CharacterClass;
+import com.company.classes.characters.Healer;
 
 import javax.swing.*;
 import java.awt.*;
