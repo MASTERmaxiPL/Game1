@@ -9,6 +9,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import static com.company.classes.AttackType.*;
+import static com.company.classes.CharacterClass.playerCount;
 
 public class GameField extends JPanel {
     private Team team;
@@ -24,12 +25,14 @@ public class GameField extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-
         for (CharacterClass player : players) {
-            g.drawImage(player.getImage(), player.getX(), player.getY(), this);
-            g.drawString(""+player.getHealthPoints(), player.getX(), player.getY()+12);
-            g.drawString("steps", player.getX(), player.getY() + 26);
-            System.out.println("health points =   " + player.getHealthPoints());
+            if(player.getHealthPoints() > 0){
+                g.drawImage(player.getImage(), player.getX(), player.getY(), this);
+                g.drawString(""+player.getHealthPoints(), player.getX(), player.getY()+12);
+                g.drawString("steps", player.getX(), player.getY() + 26);
+                System.out.println("health points =   " + player.getHealthPoints());
+            } else {
+            }
         }
     }
     //////LEFT ATTACKS//////

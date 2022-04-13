@@ -35,6 +35,7 @@ public abstract class CharacterClass implements BaseClass {
         this.rightAttackKey = rightAttackKey;
     }
 
+
     public void setHealthPoints(int healthPoints) {
         System.out.println("SET HP1 " + healthPoints);
         if (healthPoints < 0) {
@@ -145,6 +146,19 @@ public abstract class CharacterClass implements BaseClass {
                 burnEffect(600, attackedPlayer);
             }
         System.out.println(this.className + "  attacked " + attackedPlayer.className + " for " + this.attackAmount);
+        if(attackedPlayer.getHealthPoints() == 0){
+            System.out.println(attackedPlayer.className + " died");
+            attackedPlayer.setImage(null);
+            occupiedCells[attackedPlayer.getX()][attackedPlayer.getY()] = 0;
+            attackedPlayer.setAttackAmount(0);
+            attackedPlayer.setMaxHealthPoints(0);
+            playerCount--;
+        }
+        if(playerCount ==  1){
+            System.out.println("Player " + this.name + " Won!");
+
+
+        }
     }
 
     @Override
