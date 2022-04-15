@@ -1,9 +1,6 @@
 package com.company.classes.characters;
 
-import com.company.classes.AttackType;
 import com.company.classes.CharacterClass;
-
-import static com.company.classes.AttackType.MAGICAL_RANGED;
 import static com.company.classes.AttackType.PHYSICAL;
 
 public class Warrior extends CharacterClass {

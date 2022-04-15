@@ -1,7 +1,9 @@
 package com.company;
 
 import com.company.classes.CharacterClass;
+import com.company.classes.EntitiesClass;
 import com.company.classes.arenas.Syberia;
+import com.company.classes.Monster;
 
 public class Team {
     private CharacterClass[] teamMembers;
@@ -23,9 +25,9 @@ public class Team {
     }
 
     public void info(){
-        //for(int i = 0; i < teamMembers.length; i++){
         for(CharacterClass teamMembers : teamMembers){
             teamMembers.info();
+            System.out.println("*********");
         }
     }
 

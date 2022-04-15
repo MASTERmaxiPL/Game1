@@ -37,7 +37,6 @@ public abstract class CharacterClass implements BaseClass {
 
 
     public void setHealthPoints(int healthPoints) {
-        System.out.println("SET HP1 " + healthPoints);
         if (healthPoints < 0) {
             this.healthPoints = 0;
         } else if (healthPoints > this.maxHealthPoints) {
@@ -46,7 +45,6 @@ public abstract class CharacterClass implements BaseClass {
         else {
             this.healthPoints = healthPoints;
         }
-        System.out.println("SET HP2 " + this.healthPoints);
     }
 
     public void setManaPoints(int manaPoints) {
@@ -123,15 +121,17 @@ public abstract class CharacterClass implements BaseClass {
 
     public void burnEffect(int time, CharacterClass attackedPlayer){
         for(int a = 0; a<3; a++){
-            new java.util.Timer().schedule(
-                    new java.util.TimerTask() {
-                        @Override
-                        public void run() {
-                            attackedPlayer.reduceHealth(5);
-                            System.out.println(attackedPlayer.className + "attacked from burn");
-                        }
-                    }, time
-            );
+            if(attackedPlayer.getHealthPoints() > 0){
+                new java.util.Timer().schedule(
+                        new java.util.TimerTask() {
+                            @Override
+                            public void run() {
+                                attackedPlayer.reduceHealth(5);
+                                System.out.println(attackedPlayer.className + "attacked from burn");
+                            }
+                        }, time
+                );
+            }
         }
     }
 
@@ -141,10 +141,6 @@ public abstract class CharacterClass implements BaseClass {
             int health = this.getHealthPoints();
             this.setHealthPoints(health + 10);
         }
-        if(this.className == "Mage"){
-
-                burnEffect(600, attackedPlayer);
-            }
         System.out.println(this.className + "  attacked " + attackedPlayer.className + " for " + this.attackAmount);
         if(attackedPlayer.getHealthPoints() == 0){
             System.out.println(attackedPlayer.className + " died");
@@ -156,8 +152,18 @@ public abstract class CharacterClass implements BaseClass {
         }
         if(playerCount ==  1){
             System.out.println("Player " + this.name + " Won!");
+            new java.util.Timer().schedule(
+                    new java.util.TimerTask() {
+                        @Override
+                        public void run() {
+                            Runtime.getRuntime().exit(0);
+                        }
+                    }, 1000
+            );
+        }
+        if(this.className == "Mage"){
 
-
+            burnEffect(600, attackedPlayer);
         }
     }
 

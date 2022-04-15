@@ -1,6 +1,8 @@
 package com.company;
 
 import com.company.classes.CharacterClass;
+import com.company.classes.EntitiesClass;
+import com.company.classes.Monster;
 import com.company.classes.characters.Healer;
 
 import javax.swing.*;
@@ -14,9 +16,14 @@ import static com.company.classes.CharacterClass.playerCount;
 public class GameField extends JPanel {
     private Team team;
     private CharacterClass[] players;
+    private Monster monster;
+    private EntitiesClass[] monsters;
+
     public GameField(Team team) {
         this.team = team;
         this.players = team.getTeamMembers();
+        this.monster = monster;
+        //this.monsters = monster.getMonstersMembers();
 
         setFocusable(true);
         addKeyListener(new FieldKeyListener());
@@ -30,10 +37,18 @@ public class GameField extends JPanel {
                 g.drawImage(player.getImage(), player.getX(), player.getY(), this);
                 g.drawString(""+player.getHealthPoints(), player.getX(), player.getY()+12);
                 g.drawString("steps", player.getX(), player.getY() + 26);
-                System.out.println("health points =   " + player.getHealthPoints());
-            } else {
-            }
+                System.out.println(player.getName() +"'s HP = " + player.getHealthPoints());
+            } else {}
         }
+        //for(EntitiesClass monster : monsters){
+        //   if(monster.getHealthPoints() > 0){
+        //        g.drawImage(monster.getImage(), monster.getX(), monster.getY(), this);
+        //        g.drawString(""+monster.getHealthPoints(), monster.getX(), monster.getY()+12);
+        //        System.out.println("HP =   " + monster.getHealthPoints());
+        //    }
+        //    else {}
+        //}
+        System.out.println("----------------------");
     }
     //////LEFT ATTACKS//////
     protected void AttackOneOnLeft(CharacterClass player){
@@ -55,6 +70,15 @@ public class GameField extends JPanel {
     protected void AttackThreeOnRight(CharacterClass player){
         player.attack(players[CharacterClass.occupiedCells[player.getX() + Constants.CHARACTER_WIDTH + 80][player.getY()] - 1]);
     }
+
+    //Monsters Attacks//
+    protected void MonstersAttackOneLeft(EntitiesClass monster){
+        monster.attack(players[CharacterClass.occupiedCells[monster.getX() - Constants.CHARACTER_WIDTH][monster.getY()] - 1]);
+    }
+    protected void MonstersAttackOneRight(EntitiesClass monster){
+        monster.attack(players[CharacterClass.occupiedCells[monster.getX() + Constants.CHARACTER_WIDTH][monster.getY()] - 1]);
+    }
+
 
     public class FieldKeyListener extends KeyAdapter {
         @Override

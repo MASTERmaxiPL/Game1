@@ -37,7 +37,6 @@ public class Mage  extends CharacterClass {
     }
     public void up() {
         int newPositionY = this.getY() >= 80 ?  this.getY() - 80 : 0;
-        System.out.println(newPositionY);
         tryChangePosition(this.getX(), newPositionY);
     }
     public void down() {
