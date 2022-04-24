@@ -1,6 +1,7 @@
 package com.company.classes;
 
 import com.company.classes.characters.Healer;
+import com.company.classes.monsters.Goblin;
 
 import javax.swing.*;
 import java.awt.*;
@@ -164,6 +165,9 @@ public abstract class CharacterClass implements BaseClass {
         if(this.className == "Mage"){
 
             burnEffect(600, attackedPlayer);
+        }
+        if(attackedPlayer.className == "Goblin"){
+            this.setHealthPoints(getHealthPoints()+25);
         }
     }
 

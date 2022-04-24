@@ -1,5 +1,8 @@
 package com.company.classes;
 
+import com.company.GameField;
+import com.company.classes.monsters.MonsterFactory;
+
 import javax.swing.*;
 import java.awt.*;
 import static com.company.classes.CharacterClass.occupiedCells;
@@ -13,6 +16,7 @@ public abstract class EntitiesClass implements MonsterBaseClass{
     private AttackType attackType;
     private int attackAmount;
     protected String className;
+    public GameField gameField;
 
     public EntitiesClass(
             int x, int y) {
@@ -31,6 +35,10 @@ public abstract class EntitiesClass implements MonsterBaseClass{
         else {
             this.healthPoints = healthPoints;
         }
+    }
+
+    public void MonsterFactory(GameField gameField){
+        this.gameField = gameField;
     }
 
     /// Getters AND Setters
@@ -153,9 +161,7 @@ public abstract class EntitiesClass implements MonsterBaseClass{
             occupiedCells[newPositionX][newPositionY] = this.number;
             this.x = newPositionX;
             this.y = newPositionY;
-        }// else {
-    //        reduceHealth(10);
-    //    }
+        }
     }
     protected void reduceHealth(int amount) {
         setHealthPoints(this.getHealthPoints() - amount);

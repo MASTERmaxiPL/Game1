@@ -1,9 +1,7 @@
 package com.company;
 
 import com.company.classes.CharacterClass;
-import com.company.classes.EntitiesClass;
 import com.company.classes.arenas.Syberia;
-import com.company.classes.Monster;
 
 public class Team {
     private CharacterClass[] teamMembers;

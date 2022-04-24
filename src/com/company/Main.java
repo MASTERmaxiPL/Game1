@@ -1,6 +1,5 @@
 package com.company;
 
-import com.company.classes.Monster;
 import com.company.classes.arenas.Syberia;
 import com.company.classes.characters.Archer;
 import com.company.classes.characters.Healer;
@@ -26,10 +25,6 @@ public class Main {
             new Healer("Helia", 0, 320, KeyEvent.VK_F, KeyEvent.VK_H, KeyEvent.VK_T, KeyEvent.VK_G, KeyEvent.VK_R, KeyEvent.VK_Y)
         );
         team.info();
-        Monster monster = new Monster(
-                new Goblin(0, 80)
-        );
-        monster.info();
 
         Syberia arena1 = new Syberia();
         if (team.enterArena(arena1)) {

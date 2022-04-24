@@ -1,4 +1,4 @@
-package com.company.classes;
+package com.company;
 
 import com.company.MainWindow;
 import com.company.classes.EntitiesClass;

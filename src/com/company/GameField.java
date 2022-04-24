@@ -2,31 +2,36 @@ package com.company;
 
 import com.company.classes.CharacterClass;
 import com.company.classes.EntitiesClass;
-import com.company.classes.Monster;
-import com.company.classes.characters.Healer;
+import com.company.classes.monsters.Goblin;
+import com.company.classes.monsters.MonsterFactory;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.Timer;
 
 import static com.company.classes.AttackType.*;
-import static com.company.classes.CharacterClass.playerCount;
 
 public class GameField extends JPanel {
     private Team team;
     private CharacterClass[] players;
     private Monster monster;
-    private EntitiesClass[] monsters;
+    private ArrayList<EntitiesClass> monsters = new ArrayList<>();
 
     public GameField(Team team) {
         this.team = team;
         this.players = team.getTeamMembers();
         this.monster = monster;
         //this.monsters = monster.getMonstersMembers();
-
         setFocusable(true);
         addKeyListener(new FieldKeyListener());
+
+        Timer timer = new Timer();
+        MonsterFactory monsterFactory = new MonsterFactory(this, monsters);
+        timer.schedule(monsterFactory, 0, 3000);
+
     }
 
     @Override
@@ -38,6 +43,13 @@ public class GameField extends JPanel {
                 g.drawString(""+player.getHealthPoints(), player.getX(), player.getY()+12);
                 g.drawString("steps", player.getX(), player.getY() + 26);
                 System.out.println(player.getName() +"'s HP = " + player.getHealthPoints());
+            } else {}
+        }
+        for (EntitiesClass monster : monsters) {
+            if(monster.getHealthPoints() > 0){
+                g.drawImage(monster.getImage(), monster.getX(), monster.getY(), this);
+                g.drawString(""+monster.getHealthPoints(), monster.getX(), monster.getY()+12);
+                System.out.println(monster.getClass() +"'s HP = " + monster.getHealthPoints());
             } else {}
         }
         //for(EntitiesClass monster : monsters){
